@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8pklsq1oejcp"]
+
+[ext_resource type="PackedScene" uid="uid://dblo5kq68biqb" path="res://src/scenes/characters/player.tscn" id="1_hip36"]
+
+[node name="Test" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(39, 146, 103, 268, 317, 273, 524, 207, 585, 338, 24, 344)
+
+[node name="Player" parent="." instance=ExtResource("1_hip36")]
+position = Vector2(141, 80)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
