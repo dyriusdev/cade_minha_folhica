@@ -14,11 +14,31 @@ config/name="cade_minha_folhica"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*res://src/singletons/Events.gd"
+Globals="*res://src/singletons/Globals.gd"
+
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_height=360
 window/stretch/mode="canvas_items"
+
+[input]
+
+walk_right={
+"deadzone": 0.5,
+"events": []
+}
+walk_left={
+"deadzone": 0.5,
+"events": []
+}
+act_jump={
+"deadzone": 0.5,
+"events": []
+}
 
 [rendering]
 
