@@ -13,15 +13,17 @@ script = ExtResource("1_101uk")
 controllable = true
 metadata/_edit_group_ = true
 
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4lg6j")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_j152p")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4lg6j")
-
 [node name="Cam" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 limit_left = 0
+position_smoothing_enabled = true
 drag_left_margin = 0.3
 drag_top_margin = 0.3
 drag_right_margin = 0.3
