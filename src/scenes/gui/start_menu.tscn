@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkq46eub1sehx"]
+
+[ext_resource type="Script" path="res://src/scenes/gui/start_menu.gd" id="1_j8l5o"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j8l5o")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Header" type="CenterContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Container/Header"]
+layout_mode = 2
+text = "Cade minha folhiça"
+
+[node name="Buttons" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Play" type="Button" parent="Container/Buttons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="Container/Buttons"]
+layout_mode = 2
+disabled = true
+text = "Options"
+
+[node name="Credits" type="Button" parent="Container/Buttons"]
+layout_mode = 2
+disabled = true
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Container/Buttons"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Container/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Container/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Container/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Container/Buttons/Quit" to="." method="_on_quit_pressed"]

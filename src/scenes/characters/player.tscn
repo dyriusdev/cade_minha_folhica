@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dblo5kq68biqb"]
+
+[ext_resource type="Script" path="res://src/scenes/characters/player.gd" id="1_101uk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lg6j"]
+size = Vector2(16, 16)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q1i2o"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(120, 112)
+script = ExtResource("1_101uk")
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4lg6j")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Tree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_q1i2o")
+anim_player = NodePath("../Animation")
