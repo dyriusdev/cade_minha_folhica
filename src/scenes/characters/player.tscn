@@ -20,6 +20,14 @@ texture = ExtResource("2_j152p")
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4lg6j")
 
+[node name="Cam" type="Camera2D" parent="."]
+limit_left = 0
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
+editor_draw_drag_margin = true
+
 [node name="Animation" type="AnimationPlayer" parent="."]
 
 [node name="Tree" type="AnimationTree" parent="."]

@@ -9,6 +9,3 @@ polygon = PackedVector2Array(39, 146, 103, 268, 317, 273, 524, 207, 585, 338, 24
 
 [node name="Player" parent="." instance=ExtResource("1_hip36")]
 position = Vector2(141, 80)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
