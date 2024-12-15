@@ -16,12 +16,12 @@ void vertex() {
 void fragment() {
 	vec2 uv = globalposition / 512.0;
 	vec2 refraction_offset = texture(
-		refraction_map, 
+		refraction_map,
 		vec2(
-			mod(uv.x * refraction_stretch.x + TIME * speed, 1.0), 
+			mod(uv.x * refraction_stretch.x + TIME * speed, 1.0),
 			mod(uv.y * refraction_stretch.y + TIME * speed, 1.0))).xy;
-	refraction_offset -= 0.5; 
-	
+	refraction_offset -= 0.5;
+
 	vec4 refraction = texture(SCREEN_TEXTURE, SCREEN_UV - refraction_offset * refraction_strength);
 	vec4 color = vec4(1.0);
 	color.rgb = mix(refraction.rgb, water_tint.rgb, water_tint.a);
