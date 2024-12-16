@@ -44,7 +44,7 @@ func _physics_process(delta : float) -> void:
 			move()
 	pass
 
-
+# Metodos base para todas as entidades
 
 func move() -> void:
 	move_and_slide()

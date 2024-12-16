@@ -26,7 +26,7 @@ void fragment() {
 	vec2 uv = UV;
 	uv.x += uv.y * slant;
 	float output = 0.0;
-	
+
 	for (int i = 1; i <= count; i++) {
 		float h1 = hash(float(i));
 		float h2 = hash2(float(i));
