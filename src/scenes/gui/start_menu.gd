@@ -3,7 +3,7 @@ extends Control
 
 func _on_play_pressed() -> void:
 	Globals.next_scene = "res://src/scenes/test.tscn"
-	get_tree().change_scene_to_packed(Globals.loading_scene)
+	get_tree().change_scene_to_packed(Globals.LOADING_SCENE)
 	pass
 
 func _on_options_pressed() -> void:
