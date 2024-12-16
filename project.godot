@@ -19,8 +19,8 @@ boot_splash/minimum_display_time=1000
 
 [autoload]
 
-Events="*res://src/singletons/Events.gd"
-Globals="*res://src/singletons/Globals.gd"
+Events="*res://src/singletons/events.gd"
+Globals="*res://src/singletons/globals.gd"
 
 [display]
 

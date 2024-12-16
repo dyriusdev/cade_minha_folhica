@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bys70kwkkyw6c"]
 
 [ext_resource type="Script" path="res://src/scenes/characters/blob.gd" id="1_bqtbp"]
+[ext_resource type="Script" path="res://src/classes/entities/hurtbox.gd" id="2_c24g0"]
 [ext_resource type="Texture2D" uid="uid://lfl563oflsoe" path="res://icon.svg" id="2_rkmeo"]
-[ext_resource type="Script" path="res://src/classes/entities/Hurtbox.gd" id="3_h1ni0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0xry"]
 size = Vector2(128, 32)
@@ -47,7 +47,7 @@ debug_color = Color(0, 0.647469, 0.210175, 0.42)
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 130
-script = ExtResource("3_h1ni0")
+script = ExtResource("2_c24g0")
 
 [node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -16)

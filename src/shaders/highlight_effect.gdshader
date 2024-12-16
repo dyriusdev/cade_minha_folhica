@@ -12,13 +12,13 @@ group_uniforms;
 
 void fragment() {
 	COLOR = texture(TEXTURE, UV);
-	
+
 	vec2 coord = SCREEN_UV / SCREEN_PIXEL_SIZE;
 	float dist = abs(
 		sin(radians(shine_angle)) * coord.x +
 		cos(radians(shine_angle)) * coord.y +
 		mod(TIME * shine_speed, shine_duration * shine_speed) - shine_duration * shine_speed * 0.5f
 	);
-	
+
 	COLOR *= dist <= shine_width ? vec4(shine_color, 1.f) : default_color;
 }
