@@ -14,8 +14,10 @@ class_name Entity extends CharacterBody2D
 @export var gravity_influence : bool = true
 @export var acceleration : float = 0.5
 @export var friction : float = 0.25
+@export var knockback_modifier : float = 16
 @export var move_speed : int = 13
 @export var jump_speed : int = 300
+
 
 @export_subgroup("Animation")
 @export_node_path("Sprite2D") var sprite_path : NodePath = ""
@@ -52,4 +54,10 @@ func move() -> void:
 
 func died() -> void:
 	is_alive = false
+	pass
+
+func apply_knockback(origin : Vector2) -> void:
+	var dir : Vector2 = origin.direction_to(global_position)
+	var strength : float = knockback_modifier * 2
+	global_position.x += dir.x * strength
 	pass
