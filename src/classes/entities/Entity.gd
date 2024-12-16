@@ -61,3 +61,18 @@ func apply_knockback(origin : Vector2) -> void:
 	var strength : float = knockback_modifier * 2
 	global_position.x += dir.x * strength
 	pass
+
+func create_effect(packed : PackedScene, origin : Vector2 = global_position) -> Node2D:
+	if is_instance_valid(packed):
+		var effect = packed.instantiate()
+		Events.add_effect.emit(effect, origin)
+		return effect
+	return null
+
+func throw_projectile(packed : PackedScene, dir : Vector2) -> void:
+	var projectile : Projectile = create_effect(packed)
+	if is_instance_valid(projectile):
+		var projectile_rotation : float = dir.angle()
+		projectile.global_position = dir
+		projectile.rotation = projectile_rotation
+	pass

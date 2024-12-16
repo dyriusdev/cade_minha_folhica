@@ -63,6 +63,7 @@ act_jump={
 2d_physics/layer_5="enemy"
 2d_physics/layer_6="flag"
 2d_physics/layer_7="collectable"
+2d_physics/layer_8="projectile"
 
 [rendering]
 
