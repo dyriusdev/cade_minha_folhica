@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/scenes/characters/blob.gd" id="1_bqtbp"]
 [ext_resource type="Texture2D" uid="uid://lfl563oflsoe" path="res://icon.svg" id="2_rkmeo"]
-[ext_resource type="Script" path="res://src/classes/entities/hurtbox.gd" id="3_h1ni0"]
+[ext_resource type="Script" path="res://src/classes/entities/Hurtbox.gd" id="3_h1ni0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0xry"]
 size = Vector2(128, 32)
