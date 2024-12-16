@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bys70kwkkyw6c"]
+
+[ext_resource type="Script" path="res://src/scenes/characters/blob.gd" id="1_bqtbp"]
+[ext_resource type="Texture2D" uid="uid://lfl563oflsoe" path="res://icon.svg" id="2_rkmeo"]
+[ext_resource type="Script" path="res://src/classes/entities/Hurtbox.gd" id="3_h1ni0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0xry"]
+size = Vector2(128, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er6uy"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b8yag"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3geo"]
+radius = 8.0
+height = 32.0
+
+[node name="Blob" type="CharacterBody2D"]
+process_mode = 1
+collision_layer = 16
+collision_mask = 31
+script = ExtResource("1_bqtbp")
+move_speed = 6
+sprite_path = NodePath("Sprite2D")
+anim_path = NodePath("Animation")
+tree_path = NodePath("Tree")
+
+[node name="ProjectileMarker" type="Marker2D" parent="."]
+position = Vector2(40, -56)
+
+[node name="VisibleOnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -19)
+scale = Vector2(1, 1.6)
+rect = Rect2(-10, -10, 20, 24)
+
+[node name="Chasing" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="Chasing"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_g0xry")
+debug_color = Color(0, 0.647469, 0.210175, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 130
+script = ExtResource("3_h1ni0")
+
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_er6uy")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+
+[node name="Tree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_b8yag")
+anim_player = NodePath("../Animation")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_a3geo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, -16)
+scale = Vector2(0.125, 0.25)
+texture = ExtResource("2_rkmeo")
+
+[connection signal="screen_entered" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreen" to="." method="_on_visible_on_screen_screen_exited"]
+[connection signal="body_entered" from="Chasing" to="." method="_on_chasing_body_entered"]
+[connection signal="body_exited" from="Chasing" to="." method="_on_chasing_body_exited"]
