@@ -55,16 +55,30 @@ func choose_action() -> void:
 	else:
 		while current_state == States.Chase or current_state == States.Attack:
 			current_state = States.values().pick_random()
+			
+			state_timer_length = randi_range(10, 20)
+			state_timer = state_timer_length
 	pass
 
-func idle_state() -> void:
+func can_change_state(condition_to_change : bool = false) -> bool:
 	if state_timer > 0:
 		state_timer -= 1
-	if state_timer == 0:
+		return false
+	if state_timer == 0 || condition_to_change:
+		return true
+	return false
+
+func idle_state() -> void:
+	if can_change_state():
 		choose_action()
+	#TODO: chamar metodo de animação
 	pass
 
 func patrol_state() -> void:
+	# TODO: adicionar argumentos para definir mudança de estados
+	if can_change_state():
+		choose_action()
+	#TODO: implementar comportamento de patrulha
 	pass
 
 func chase_state() -> void:
