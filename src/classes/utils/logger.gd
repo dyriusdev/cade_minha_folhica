@@ -6,7 +6,7 @@ const TEMPLATE : String = "[%s](%s) : %s"
 
 static func logger(type : Types, message : String) -> void:
 	var dt : Dictionary = Time.get_datetime_dict_from_system()
-	var time : String = "%s/%s/%s-%s:%s:%s" % [dt.day, dt.month, dt.year, dt.hour, dt.minute, dt.second]
+	var time : String = "%s/%s/%s - %s:%s:%s" % [dt.day, dt.month, dt.year, dt.hour, dt.minute, dt.second]
 	print(TEMPLATE % [time, Types.keys()[type], message])
 	pass
 
