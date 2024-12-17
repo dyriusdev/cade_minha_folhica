@@ -10,6 +10,9 @@ enum States { Idle, Patrol, Chase, Attack }
 var current_state : States = States.Idle
 # Alvo para ser seguido
 var target : Entity = null
+# Controladores do tempo de estado
+var state_timer_length : int = 100
+var state_timer : int = 0
 
 func _ready() -> void:
 	pass
@@ -55,6 +58,10 @@ func choose_action() -> void:
 	pass
 
 func idle_state() -> void:
+	if state_timer > 0:
+		state_timer -= 1
+	if state_timer == 0:
+		choose_action()
 	pass
 
 func patrol_state() -> void:
