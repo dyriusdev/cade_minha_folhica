@@ -9,6 +9,7 @@ class_name Entity extends CharacterBody2D
 
 @export_group("Entity")
 @export var controllable : bool = false
+@export var max_health : int = 1
 
 @export_subgroup("Physic")
 @export var gravity_influence : bool = true
@@ -26,16 +27,16 @@ class_name Entity extends CharacterBody2D
 
 
 var is_alive : bool = true
-
 var can_move : bool = true
 var is_walking : bool = false
 var is_jumping : bool = false
-
 var last_direction : Vector2 = Vector2.ZERO
 var tree_playback : AnimationNodeStateMachinePlayback = null
-
+var health : int = 1
 
 func _ready() -> void:
+	health = max_health
+	
 	if not tree_path.is_empty():
 		tree_playback = get_node(tree_path).get("parameters/playback")
 	else:
@@ -55,6 +56,13 @@ func _physics_process(delta : float) -> void:
 
 func move() -> void:
 	move_and_slide()
+	pass
+
+func damage(amount : int) -> void:
+	health -= amount
+	if health <= 0:
+		health = 0
+		died()
 	pass
 
 func died() -> void:
@@ -82,7 +90,5 @@ func create_effect(packed : PackedScene, origin : Vector2 = global_position) -> 
 func throw_projectile(packed : PackedScene, dir : Vector2) -> void:
 	var projectile : Projectile = create_effect(packed)
 	if is_instance_valid(projectile):
-		var projectile_rotation : float = dir.angle()
 		projectile.global_position = dir
-		projectile.rotation = projectile_rotation
 	pass

@@ -22,6 +22,8 @@ func _on_area_entered(_area : Area2D) -> void:
 	destroy()
 	pass
 
-func _on_body_entered(_body : Node2D):
+func _on_body_entered(body : Node2D):
+	if body.has_method("damage"):
+		body.call_deferred("damage", damage)
 	destroy()
 	pass

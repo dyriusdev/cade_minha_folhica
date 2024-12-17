@@ -16,3 +16,8 @@ func move():
 	if Input.is_action_just_pressed("act_jump") and is_on_floor():
 		velocity.y = -jump_speed
 	pass
+
+func died() -> void:
+	super.died()
+	get_tree().reload_current_scene()
+	pass
