@@ -25,7 +25,6 @@ class_name Entity extends CharacterBody2D
 @export_node_path("AnimationTree") var tree_path : NodePath = ""
 
 
-
 var is_alive : bool = true
 
 var can_move : bool = true
@@ -33,8 +32,14 @@ var is_walking : bool = false
 var is_jumping : bool = false
 
 var last_direction : Vector2 = Vector2.ZERO
+var tree_callback : AnimationNodeStateMachine = null
+
 
 func _ready() -> void:
+	if not tree_path.is_empty():
+		tree_callback = get_node(tree_path).get("parameters/playback")
+	else:
+		Logger.warning("'tree_path' is empty")
 	pass
 
 func _physics_process(delta : float) -> void:
@@ -54,6 +59,11 @@ func move() -> void:
 
 func died() -> void:
 	is_alive = false
+	pass
+
+func play_animation(key : String) -> void:
+	if is_instance_valid(tree_callback):
+		tree_callback.travel(key)
 	pass
 
 func apply_knockback(origin : Vector2) -> void:
