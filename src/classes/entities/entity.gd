@@ -32,12 +32,12 @@ var is_walking : bool = false
 var is_jumping : bool = false
 
 var last_direction : Vector2 = Vector2.ZERO
-var tree_callback : AnimationNodeStateMachine = null
+var tree_playback : AnimationNodeStateMachinePlayback = null
 
 
 func _ready() -> void:
 	if not tree_path.is_empty():
-		tree_callback = get_node(tree_path).get("parameters/playback")
+		tree_playback = get_node(tree_path).get("parameters/playback")
 	else:
 		Logger.warning("'tree_path' is empty")
 	pass
@@ -62,8 +62,8 @@ func died() -> void:
 	pass
 
 func play_animation(key : String) -> void:
-	if is_instance_valid(tree_callback):
-		tree_callback.travel(key)
+	if is_instance_valid(tree_playback):
+		tree_playback.travel(key)
 	pass
 
 func apply_knockback(origin : Vector2) -> void:
